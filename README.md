@@ -37,7 +37,7 @@ Web app ini di bangun dan di kembangkan  dengan  bahasa  pemograman  <a href="ht
 
 ##  **FRONTEND** 
 
-<p align="center"><a href="#" target="_blank"><img src="readmeAssets/FRONTEND.png" width="100%"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="readmeAssets/frontend.png" width="100%"></a></p>
 
 Frontend web App sedang  dalam  pengembangan  sekitar 25% yang telah  selesai dan di bangun  dengan UI menggunakan framework CSS yaitu tailwind css dan dengan  aset-aset yang di gunakan  sebagai  berikut 
 
