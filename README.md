@@ -6,11 +6,7 @@
 
 </p>
 
-<p align="center">
-<img src="readmeAssets/home-frontend.png" width="500px"
-
-<img src="readmeAssets/dashboard-home.png" width="500px"
-
-<img src="readmeAssets/dashboard-dark.png" width="500px"
+<p >
+<img align="center" src="readmeAssets/home-frontend.png" width="500px"
 
 </p>
