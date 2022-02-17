@@ -22,7 +22,7 @@ class InfoFactory extends Factory
             'excerpt' => $this->faker->paragraph(),
             'gambar'=> $this->faker->imageUrl(1280, 720, 'animals', true),
             'content' => $this->faker->paragraph(6, 12),
-            'tag_id' => $this->faker->numberBetween(1,25), 
+            'tags_id' => $this->faker->numberBetween(1,25), 
             'category_id' =>$this->faker->numberBetween(1,10)
         ];
     }

@@ -48,12 +48,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="title" class="form-control-label">Ketegory</label>
+                                <label for="title" class="form-control-label">Tags</label>
                                 <div class="form-group">
-                                    <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                                        <option value="AL">Alabama</option>
-                                        ...
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-multiple form-control" name="tag[]" multiple="multiple">
+                                        @foreach ($tags as $tag )
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            
+                                        @endforeach
                                     </select>
         
                                     <script>

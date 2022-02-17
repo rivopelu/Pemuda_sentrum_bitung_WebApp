@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('infos', function (Blueprint $table) {
+        Schema::create('infos_tags', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('title');
-            $table->string('slug');
-            $table->text('excerpt');
-            $table->text('gambar');
-            $table->text('content');
+            $table->integer('infos_id');
             $table->integer('tags_id');
-            $table->integer('category_id');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infos');
+        Schema::dropIfExists('info_tag');
     }
 };

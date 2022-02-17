@@ -94,13 +94,15 @@ class componen extends Controller
 
     public function createInfo()
     {
+        $tags = tag::all();
         $info = info::all();
         $category = category::all();
         return view ('backend.content.info.create', [
             'title' => 'Buat Informasi',
             'active' => 'informasi',
             'info' => $info,
-            'category' => $category
+            'category' => $category,
+            'tags' => $tags
             
             
         ]);
@@ -119,10 +121,11 @@ class componen extends Controller
         $validasiData['slug' ] = Str::slug($request->title);
         $validasiData['excerpt'] = Str::limit(strip_tags($request->content), 10, );
 
+
         $gambar = $request->gambar;
         $new_gambar = time().$gambar->getClientOriginalName();
 
-        info::create([
+      $info =  info::create([
             'title' => $request->title,
             'content' => $request->content,
             'slug' => $validasiData['slug'],
@@ -131,6 +134,7 @@ class componen extends Controller
             'catgories_id' => $request->categories_id
             
         ]);
+        $info->tag()->attach($request->tags);
         $gambar->move('public/uploads/posts/', $new_gambar);
         return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di tambahkan');
     }
