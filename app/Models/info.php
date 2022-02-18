@@ -16,9 +16,7 @@ class info extends Model
     {
         return $this->belongsTo(category::class);
     }
-
-    public function tags()
-    {
-        return $this->belongsToMany(tag::class);
+    public function tags(){
+        return $this->belongsToMany(tags::class);
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('infos_tags', function (Blueprint $table) {
-            $table->id();
-            $table->integer('infos_id');
-            $table->integer('tags_id');
-            $table->timestamps();
+        Schema::create('info_tag', function (Blueprint $table) {
+            $table->integer('info_id')->constrained('infos');
+            $table->integer('tag_id')->constrained('tags');
+            $table->primary(['info_id', 'tag_id']);
+          
         });
     }
 

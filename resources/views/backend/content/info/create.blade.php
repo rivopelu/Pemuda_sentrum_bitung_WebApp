@@ -48,13 +48,19 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="title" class="form-control-label">Tags</label>
+                                <label for="tags" class="form-control-label">Tags</label>
                                 <div class="form-group">
-                                    <select class="js-example-basic-multiple form-control" name="tag[]" multiple="multiple">
+                                    <select class="js-example-basic-multiple form-control @error('tags') is-invalid @enderror" name="tags[]" id="tags" multiple="">
                                         @foreach ($tags as $tag )
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                             
                                         @endforeach
+
+                                        @error('tags')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                     </select>
         
                                     <script>

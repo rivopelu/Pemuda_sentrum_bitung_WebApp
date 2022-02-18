@@ -115,6 +115,7 @@ class componen extends Controller
             'content' => 'required|min:3',
             'gambar' => 'required',
             'categories_id' => 'required',
+            // 'tags_id' => 'required'
             // 'excerpt' => 'min:3'
         ]);
         
@@ -125,7 +126,7 @@ class componen extends Controller
         $gambar = $request->gambar;
         $new_gambar = time().$gambar->getClientOriginalName();
 
-      $info =  info::create([
+        $info =  info::create([
             'title' => $request->title,
             'content' => $request->content,
             'slug' => $validasiData['slug'],
@@ -134,7 +135,9 @@ class componen extends Controller
             'catgories_id' => $request->categories_id
             
         ]);
-        $info->tag()->attach($request->tags);
+
+
+        $info->tags()->attach(request('tags'));
         $gambar->move('public/uploads/posts/', $new_gambar);
         return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di tambahkan');
     }
