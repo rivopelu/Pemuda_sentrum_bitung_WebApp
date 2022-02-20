@@ -34,7 +34,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title" class="form-control-label">Ketegory</label>
-                                <select class="form-control " id="categories_id" name="categories_id">
+                                <select class="form-control " id="category_id" name="category_id">
                                     @foreach ($category as $hasil)
                                         @if (old('category_id') == $hasil->id)
                                             <option value="{{ $hasil->id }}" selected>{{ $hasil->name }}</option>
@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tags" class="form-control-label">Tags</label>
                                 <div class="form-group">
@@ -71,7 +71,7 @@
         
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- tagg --}}
                         
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('gambar');
             $table->text('content');
-            $table->integer('tag_id');
+            $table->integer('tag_id')->nullable();
             $table->integer('category_id');
         });
     }

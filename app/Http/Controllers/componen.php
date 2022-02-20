@@ -114,7 +114,7 @@ class componen extends Controller
             'title' => 'required|max:255|unique:infos',
             'content' => 'required|min:3',
             'gambar' => 'required',
-            'categories_id' => 'required',
+            'category_id' => 'required',
             // 'tags_id' => 'required'
             // 'excerpt' => 'min:3'
         ]);
@@ -132,12 +132,12 @@ class componen extends Controller
             'slug' => $validasiData['slug'],
             'excerpt' => $validasiData['excerpt'],
             'gambar' => 'public/uploads/posts/'.$new_gambar,
-            'catgories_id' => $request->categories_id
+            'category_id' => $request->category_id
             
         ]);
 
 
-        $info->tags()->attach(request('tags'));
+        // $info->tags()->attach(request('tags'));
         $gambar->move('public/uploads/posts/', $new_gambar);
         return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di tambahkan');
     }
