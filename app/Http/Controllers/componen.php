@@ -190,5 +190,21 @@ class componen extends Controller
         }
 
         $validasiData = $request->validate($rules);
+
+
+        $validasiData['slug' ] = Str::slug($request->title);
+        $validasiData['excerpt'] = Str::limit(strip_tags($request->content), 10, );
+
+
+        $gambar = $request->gambar;
+        $new_gambar = time().$gambar->getClientOriginalName();
+
+        $info =  info::Where('id', $info->id)
+        ->update($validasiData);
+
+
+        // $info->tags()->attach(request('tags'));
+        $gambar->move('public/uploads/posts/', $new_gambar);
+        return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di edit');
     }
 }

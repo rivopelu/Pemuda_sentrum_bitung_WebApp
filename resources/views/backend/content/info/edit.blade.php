@@ -14,7 +14,6 @@
         <div class="col-12">
             <div class="card mb-4 w" style="min-height: 100vh">
                 <form class="card-body" method="post" action="/dashboard/edit/{{ $info->slug }}" enctype="multipart/form-data">
-                    @method('put')
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
