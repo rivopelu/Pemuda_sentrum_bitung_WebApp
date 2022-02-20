@@ -22,7 +22,7 @@
 
                 <div class="m-4">
 
-                    <a href="/dashboard/info/create" class="btn btn-primary ">Tambah Informasi</a>
+                    <a href="/dashboard/info/tambah" class="btn btn-primary ">Tambah Informasi</a>
                 </div>
 
                 <div class="card-body px-0 pt-0 pb-2">
@@ -73,27 +73,59 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 {{-- view --}}
-                                                <a href="#" class="badge btn-primary"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="/dashboard/info/{{ $item->slug }}" class="badge btn-primary"><i class="bi bi-eye-fill"></i></a>
                                                 {{-- edit --}}
-                                                <a href="#" class="badge btn-success"><i
+                                                <a href="/dashboard/info/{{ $item->slug }}/edit" class="badge btn-success"><i
                                                         class="bi bi-pencil-square"></i></a>
                                                 {{-- deleted --}}
 
 
 
-                                                <form action="/destroy-info/{{ $item->slug }}" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="badge btn-danger border-0" onclick="return confirm('yakin ingin menghapus data?')">
+                                                
+                                                <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#{{ $item->slug }}" class="badge btn-danger border-0" >
                                                     <i class="bi bi-x-circle"></i>
                                                 </button>
-                                                </form>
                                                 
                                             </div>
                                         </td>
 
 
                                     </tr>
+
+                                    {{-- MODAL --}}
+                                    <div class="modal fade" id="{{ $item->slug }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content  card">
+                                                <form action="/destroy-info/{{ $item->id }}" class="d-inline"
+                                                    method="post">
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Tag</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <h5>Yakin ingin menghapus Informasi<strong>
+                                                                        {{ $item->title }}</strong></h5>
+            
+            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                                                                class="bi bi-x-lg"></i> Cancel</button>
+                                                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>
+                                                            Yes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
 
 

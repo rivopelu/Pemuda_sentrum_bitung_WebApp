@@ -48,9 +48,12 @@ Route::controller(componen::class)->group( function(){
 
     // --------------->INFORMASI ROUTE <--------------
     Route::get('/dashboard/info','indexInfo');
-    Route::get('/dashboard/info/create','createInfo');
+    Route::get('/dashboard/info/tambah','createInfo');
+    Route::get('/dashboard/info/{info}','singleInfo');
     Route::post('/dashboard/info/create','storeInfo');
     route::post('/destroy-info/{info}', 'destroyInfo');
+    route::get('/dashboard/info/{info}/edit', 'editInfo');
+    route::post('/dashboard/edit/{info}', 'updateInfo');
    
 
 });

@@ -47,7 +47,7 @@
     </div>
     <div class="sidenav-footer mx-3 ">
 
-        <a href="#" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Back To Home</a>
+        <a href="/"  class="btn btn-dark btn-sm w-100 mb-3">Back To Home</a>
         <a class="btn btn-primary btn-sm  w-100 mb-3" href="#" type="button">Informasi</a>
         <a class="btn btn-success btn-sm mb-0 w-100" href="#" type="button">Post</a>
     </div>

@@ -16,11 +16,13 @@ class componen extends Controller
         $users = user::latest()->paginate(5);
         $category = category::latest()->paginate(500);
         $tag = tag::latest()->paginate(500);
+        $info = info::latest()->paginate(500);
         return view('backend.content.dashboard', [
             'title' => 'Dashboard',
             'active' => 'dashboard',
             'category' => $category,
             'tag' => $tag,
+            'info' => $info,
             'users' => $users,
             
         ]);
@@ -147,8 +149,46 @@ class componen extends Controller
         $info = info::findorfail($slug);
         $info->delete();
 
-        return redirect()->back()->with('pesan', 'informasi telah berhasil di hapus');
+        return redirect()->back()->with('success', 'informasi telah berhasil di hapus');
     }
 
-    
+    public function singleInfo(info $info)
+    {
+        return view('backend.content.info.single', [
+            'title' => 'Informasi',
+            'active' => 'informasi',
+            'info' => $info
+        ]);
+    }
+
+    public function editInfo(info $info)
+    {
+        return view('backend.content.info.edit',[
+        'title' => 'tambah informasi',
+        'active' => 'informasi',
+        'info' => $info,
+        'category' => category::all(),
+        'tag' => tag::all()
+        ]);
+        
+        
+    }
+
+    public function updateInfo(Request $request, info $info)
+    {
+        $rules =[
+            
+            'content' => 'required|min:3',
+            'gambar' => 'required',
+            'category_id' => 'required',
+            // 'tags_id' => 'required'
+            // 'excerpt' => 'min:3'
+        ];
+
+        if($request->title != $info->title){
+            $rules ['title'] =  'required|max:255|unique:infos';
+        }
+
+        $validasiData = $request->validate($rules);
+    }
 }

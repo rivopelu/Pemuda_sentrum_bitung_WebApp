@@ -19,4 +19,9 @@ class info extends Model
     public function tags(){
         return $this->belongsToMany(tags::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
