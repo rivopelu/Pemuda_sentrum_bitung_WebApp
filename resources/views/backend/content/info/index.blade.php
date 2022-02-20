@@ -81,13 +81,13 @@
 
 
 
-                                                {{-- <form action="{{ route('info.destroy', $item->id) }}" method="post">
+                                                <form action="/destroy-info/{{ $item->slug }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="badge btn-danger border-0" onclick="return confirm('yakin ingin menghapus data?')">
+                                                <button type="submit" class="badge btn-danger border-0" onclick="return confirm('yakin ingin menghapus data?')">
                                                     <i class="bi bi-x-circle"></i>
                                                 </button>
-                                                </form> --}}
+                                                </form>
                                                 
                                             </div>
                                         </td>

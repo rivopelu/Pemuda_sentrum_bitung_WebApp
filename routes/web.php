@@ -50,6 +50,8 @@ Route::controller(componen::class)->group( function(){
     Route::get('/dashboard/info','indexInfo');
     Route::get('/dashboard/info/create','createInfo');
     Route::post('/dashboard/info/create','storeInfo');
+    route::post('/destroy-info/{info}', 'destroyInfo');
+   
 
 });
 

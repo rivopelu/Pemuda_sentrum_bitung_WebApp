@@ -142,5 +142,13 @@ class componen extends Controller
         return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di tambahkan');
     }
 
+    public function destroyInfo($slug)
+    {
+        $info = info::findorfail($slug);
+        $info->delete();
+
+        return redirect()->back()->with('pesan', 'informasi telah berhasil di hapus');
+    }
+
     
 }
