@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 w" style="min-height: 100vh">
-                <form class="card-body" method="post" action="/dashboard/info/create " enctype="multipart/form-data">
+                <form class="card-body" method="post" action="/dashboard/info" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tags" class="form-control-label">Tags</label>
                                 <div class="form-group">
@@ -71,7 +71,7 @@
         
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         {{-- tagg --}}
                         
 

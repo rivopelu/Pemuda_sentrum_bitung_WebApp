@@ -80,77 +80,8 @@ class componen extends Controller
 
 
 
-    // ------------------->INFORMASI CONTROLLER<-----------------------
-    public function indexInfo()
-    {
-        $info = info::latest()->paginate(15);
-        return view ('backend.content.info.index', [
-            'title' => 'Informasi',
-            'active' => 'informasi',
-            'info' => $info
-            
-        ]);
+ 
 
-        
-    }
-
-    public function createInfo()
-    {
-        $tags = tag::all();
-        $info = info::all();
-        $category = category::all();
-        return view ('backend.content.info.create', [
-            'title' => 'Buat Informasi',
-            'active' => 'informasi',
-            'info' => $info,
-            'category' => $category,
-            'tags' => $tags
-            
-            
-        ]);
-    }
-
-    public function storeInfo(Request $request)
-    {
-        $validasiData = $request->validate([
-            'title' => 'required|max:255|unique:infos',
-            'content' => 'required|min:3',
-            'gambar' => 'required',
-            'category_id' => 'required',
-            // 'tags_id' => 'required'
-            // 'excerpt' => 'min:3'
-        ]);
-        
-        $validasiData['slug' ] = Str::slug($request->title);
-        $validasiData['excerpt'] = Str::limit(strip_tags($request->content), 10, );
-
-
-        $gambar = $request->gambar;
-        $new_gambar = time().$gambar->getClientOriginalName();
-
-        $info =  info::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'slug' => $validasiData['slug'],
-            'excerpt' => $validasiData['excerpt'],
-            'gambar' => 'public/uploads/posts/'.$new_gambar,
-            'category_id' => $request->category_id
-            
-        ]);
-
-
-        // $info->tags()->attach(request('tags'));
-        $gambar->move('public/uploads/posts/', $new_gambar);
-        return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di tambahkan');
-    }
-
-    public function destroyInfo($slug)
-    {
-        $info = info::findorfail($slug);
-        $info->delete();
-
-        return redirect()->back()->with('success', 'informasi telah berhasil di hapus');
-    }
 
     public function singleInfo(info $info)
     {
@@ -161,50 +92,4 @@ class componen extends Controller
         ]);
     }
 
-    public function editInfo(info $info)
-    {
-        return view('backend.content.info.edit',[
-        'title' => 'tambah informasi',
-        'active' => 'informasi',
-        'info' => $info,
-        'category' => category::all(),
-        'tag' => tag::all()
-        ]);
-        
-        
-    }
-
-    public function updateInfo(Request $request, info $info)
-    {
-        $rules =[
-            
-            'content' => 'required|min:3',
-            'gambar' => 'required',
-            'category_id' => 'required',
-            // 'tags_id' => 'required'
-            // 'excerpt' => 'min:3'
-        ];
-
-        if($request->title != $info->title){
-            $rules ['title'] =  'required|max:255|unique:infos';
-        }
-
-        $validasiData = $request->validate($rules);
-
-
-        $validasiData['slug' ] = Str::slug($request->title);
-        $validasiData['excerpt'] = Str::limit(strip_tags($request->content), 10, );
-
-
-        $gambar = $request->gambar;
-        $new_gambar = time().$gambar->getClientOriginalName();
-
-        $info =  info::Where('id', $info->id)
-        ->update($validasiData);
-
-
-        // $info->tags()->attach(request('tags'));
-        $gambar->move('public/uploads/posts/', $new_gambar);
-        return redirect('/dashboard/info')->with('success', 'Informasi telah berhasil di edit');
-    }
 }

@@ -13,8 +13,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 w" style="min-height: 100vh">
-                <form class="card-body" method="post" action="/dashboard/edit/{{ $info->slug }}" enctype="multipart/form-data">
+                <form class="card-body" method="post" action="{{ route('info.update', $info->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -35,7 +36,7 @@
                                 <label for="title" class="form-control-label">Ketegory</label>
                                 <select class="form-control " id="category_id" name="category_id">
                                     @foreach ($category as $hasil)
-                                        @if (old('category_id, $info->category_id') == $hasil->id)
+                                        @if ($info->category_id == $hasil->id)
                                             <option value="{{ $hasil->id }}" selected>{{ $hasil->name }}</option>
                                         @else
                                             <option value="{{ $hasil->id }}">{{ $hasil->name }}</option>
@@ -80,7 +81,7 @@
                             <div class="form-group">
                                 <label for="gambar" class="form-control-label">Gambar</label>
                                 <input class="form-control  @error('gambar') is-invalid @enderror" type="file"
-                                    value="{{ old('gambar', $info->gambar) }} id=" gambar" name="gambar">
+                                    value="{{ old('gambar', $info->gambar) }} id="gambar" name="gambar">
                                 @error('title')
                                     <div class="invalid-feedback">
                                         {{ $message }}

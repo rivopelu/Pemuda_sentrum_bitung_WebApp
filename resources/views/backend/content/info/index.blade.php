@@ -22,7 +22,7 @@
 
                 <div class="m-4">
 
-                    <a href="/dashboard/info/tambah" class="btn btn-primary ">Tambah Informasi</a>
+                    <a href="{{ route('info.create') }}" class="btn btn-primary ">Tambah Informasi</a>
                 </div>
 
                 <div class="card-body px-0 pt-0 pb-2">
@@ -98,9 +98,10 @@
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content  card">
-                                                <form action="/destroy-info/{{ $item->id }}" class="d-inline"
+                                                <form action="/dashboard/info/{{ $item->id }}" class="d-inline"
                                                     method="post">
                                                     @csrf
+                                                    @method('delete')
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Hapus Tag</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"

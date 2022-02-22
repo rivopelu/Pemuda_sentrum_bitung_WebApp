@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\componen;
+use App\Http\Controllers\infoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -47,18 +48,13 @@ Route::controller(componen::class)->group( function(){
 
 
     // --------------->INFORMASI ROUTE <--------------
-    Route::get('/dashboard/info','indexInfo');
-    Route::get('/dashboard/info/tambah','createInfo');
-    Route::get('/dashboard/info/{info}','singleInfo');
-    Route::post('/dashboard/info/create','storeInfo');
-    route::post('/destroy-info/{info}', 'destroyInfo');
-    route::get('/dashboard/info/{info}/edit', 'editInfo');
-    route::post('/dashboard/edit/{info}', 'updateInfo');
+
    
+    // Route::get('/dashboard/info/{info}','singleInfo');
 
 });
 
-
+Route::resource('/dashboard/info', infoController::class);
 
 
 
