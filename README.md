@@ -52,7 +52,7 @@ Dan kemungkinan  dari  pengambangan  kedepan asset-asset dalam  tersebut  bisa  
 <br/>
 <br/>
 <br/>
-## BACKEND / DASHBOARD
+## DASHBOARD
 
 <p align="center"><a href="#" target="_blank"><img src="readmeAssets/backend.png" width="100%"></a></p>
 Backend webapp sepenuhnya di bangun  dengan  bahasa  Pemograman PHP dengan  FrameWork  LARAVEL untuk  tahap  penganbangan Backend juga menggunakan  beberapa asset yang di gunakan dan untuk UI dashboard menggunakan  Argon dashboard yang berbasis  <a href="https://getbootstrap.com/">Bootsrap v5.0 </a>.
